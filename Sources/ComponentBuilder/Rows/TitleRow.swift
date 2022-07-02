@@ -9,6 +9,12 @@ struct TitleRow: ComponentBuilder {
     }
 }
 
+extension ComponentBuilder {
+    static func title(_ title: String) -> AnyView {
+        TitleRow(viewModel: .init(title: title)).toView()
+    }
+}
+
 class TitleRowViewModel {
     let title: String
 
