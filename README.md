@@ -43,8 +43,8 @@ This is a verbose code. I want the ability to create different components and to
 ```swift
 class ContentViewModel: ObservableObject {
     @Published var rows = [
-        .title(.init(title: "title")),
-        .button(.init("buttonTitle", action: { }))
+        .title("title"),
+        .button("buttonTitle", action: { })
     ]
 }
 
@@ -53,9 +53,7 @@ struct Content: View {
     
     var body: some View {
         List {
-            ForEach(self.viewModel.rows) { row in
-                row.buildView()
-            }
+            ForEach(self.viewModel.rows) { $0.buildView() }
         }
     }
 }
